@@ -107,6 +107,31 @@ function initLightbox() {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 }
 
+// ─── Typewriter Effect ────────────────────────────────────────
+function initTypewriter() {
+  const el = document.querySelector('.message-typewriter');
+  if (!el) return;
+  const text = el.dataset.text || '';
+  let i = 0;
+
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      obs.disconnect();
+      function type() {
+        if (i < text.length) {
+          el.textContent = text.slice(0, ++i);
+          setTimeout(type, 38);
+        } else {
+          el.classList.add('done');
+        }
+      }
+      type();
+    }
+  }, { threshold: 0.5 });
+
+  obs.observe(el);
+}
+
 // ─── Music Toggle ─────────────────────────────────────────────
 function initMusic() {
   const btn   = document.getElementById('music-btn');
@@ -134,4 +159,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initMusic();
   initLightbox();
+  initTypewriter();
 });
