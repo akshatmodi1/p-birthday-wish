@@ -1,9 +1,9 @@
 // ─── Scroll Reveal ────────────────────────────────────────────
 function initReveal() {
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const delay = entry.target.dataset.delay || 0;
+        const delay = Number(entry.target.dataset.delay) || 0;
         setTimeout(() => entry.target.classList.add('revealed'), delay);
         observer.unobserve(entry.target);
       }
