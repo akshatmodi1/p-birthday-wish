@@ -154,6 +154,28 @@ function initTypewriter() {
   obs.observe(card);
 }
 
+// ─── Splash Screen + Autoplay ────────────────────────────────
+function initSplash() {
+  const splash = document.getElementById('splash');
+  const btn    = document.getElementById('splash-btn');
+  const audio  = document.getElementById('bg-music');
+  const musicBtn = document.getElementById('music-btn');
+  const icon   = musicBtn ? musicBtn.querySelector('.music-icon') : null;
+  if (!splash || !btn) return;
+
+  btn.addEventListener('click', () => {
+    splash.classList.add('hide');
+    setTimeout(() => { splash.style.display = 'none'; }, 650);
+
+    if (audio) {
+      audio.play().then(() => {
+        if (musicBtn) musicBtn.classList.add('playing');
+        if (icon) icon.textContent = '🎵';
+      }).catch(() => {});
+    }
+  });
+}
+
 // ─── Music Toggle ─────────────────────────────────────────────
 function initMusic() {
   const btn   = document.getElementById('music-btn');
@@ -165,21 +187,64 @@ function initMusic() {
     if (audio.paused) {
       audio.play().then(() => {
         btn.classList.add('playing');
-        icon.textContent = '🔇';
+        icon.textContent = '🎵';
       }).catch(() => {});
     } else {
       audio.pause();
       btn.classList.remove('playing');
-      icon.textContent = '🎵';
+      icon.textContent = '🔇';
     }
   });
 }
 
+// ─── Pause music while any video is playing ───────────────────
+function initVideoAudioSync() {
+  const audio  = document.getElementById('bg-music');
+  const musicBtn = document.getElementById('music-btn');
+  const icon   = musicBtn ? musicBtn.querySelector('.music-icon') : null;
+  if (!audio) return;
+
+  let wasPlayingBeforeVideo = false;
+
+  document.querySelectorAll('.video-card-player video').forEach(video => {
+    video.addEventListener('play', () => {
+      if (!audio.paused) {
+        wasPlayingBeforeVideo = true;
+        audio.pause();
+        if (musicBtn) musicBtn.classList.remove('playing');
+        if (icon) icon.textContent = '🔇';
+      }
+    });
+
+    video.addEventListener('pause', () => {
+      if (wasPlayingBeforeVideo) {
+        wasPlayingBeforeVideo = false;
+        audio.play().then(() => {
+          if (musicBtn) musicBtn.classList.add('playing');
+          if (icon) icon.textContent = '🎵';
+        }).catch(() => {});
+      }
+    });
+
+    video.addEventListener('ended', () => {
+      if (wasPlayingBeforeVideo) {
+        wasPlayingBeforeVideo = false;
+        audio.play().then(() => {
+          if (musicBtn) musicBtn.classList.add('playing');
+          if (icon) icon.textContent = '🎵';
+        }).catch(() => {});
+      }
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initSplash();
   initReveal();
   initNavDots();
   initParticles();
   initMusic();
+  initVideoAudioSync();
   initMarquee();
   initLightbox();
   initTypewriter();

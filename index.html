@@ -9,13 +9,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <!-- EDIT: Update content values for social sharing -->
   <meta name="description" content="Happy Birthday, Purva! 🎉 A special surprise just for you." />
   <meta property="og:title" content="Happy Birthday, Purva! 🎉" />
   <meta property="og:description" content="A little something made just for you." />
   <meta property="og:type" content="website" />
 </head>
 <body>
+
+  <!-- Splash Screen — click to enter (required for autoplay) -->
+  <div id="splash" role="dialog" aria-modal="true" aria-label="Welcome screen">
+    <div class="splash-content">
+      <p class="splash-eyebrow">🎀 A little something for you</p>
+      <h2 class="splash-title">Happy Birthday,<br><span class="splash-name">Purva!</span></h2>
+      <p class="splash-sub">Tap to open your surprise 🎁</p>
+      <button class="splash-btn" id="splash-btn">Let's Go! 🎉</button>
+    </div>
+  </div>
+
   <!-- Side Navigation Dots -->
   <nav class="side-nav" aria-label="Page sections">
     <a class="nav-dot" href="#hero"     aria-label="Hero"     data-section="hero"></a>
@@ -25,201 +35,181 @@
     <a class="nav-dot" href="#footer"   aria-label="Footer"   data-section="footer"></a>
   </nav>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       HERO SECTION
-       EDIT: Change the subtext below to your own message
-       ═══════════════════════════════════════════════════════════ -->
+  <!-- HERO -->
   <section id="hero">
     <canvas id="particles-canvas"></canvas>
     <div class="hero-content">
       <p class="hero-eyebrow">🎀 It's your special day</p>
       <h1 class="hero-title">Happy Birthday,<br><span class="hero-name">Purva!</span> 🎉</h1>
-      <!-- EDIT: Replace subtext with your own warm message -->
-      <p class="hero-sub">Five months of late nights, long calls, and everything in between — today is yours. 🌙</p>
-      <a href="#gallery" class="btn btn-hero">Open Your Surprise 💌</a>
+      <p class="hero-sub">Five months of the most fun, chaotic, laugh-out-loud conversations, late nights, long calls, and everything in between and today it's all about YOU! 🎊</p>
+      <a href="#gallery" class="btn btn-hero">Open Your Surprise 🎁</a>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       PHOTO GALLERY — Infinite scrolling marquee
-       EDIT: Replace each img src with your actual photo paths
-         e.g. src="assets/images/photo-1.jpg"
-       EDIT: Replace each alt text with a meaningful description
-       The strip duplicates itself for a seamless loop — edit
-       only the first set of 6 images (the second set is a clone
-       added automatically by JS for the seamless effect, but you
-       can also just duplicate your edits in both sets).
-       ═══════════════════════════════════════════════════════════ -->
+  <!-- PHOTO GALLERY — Infinite scrolling marquee -->
   <section id="gallery" class="section gallery-section">
     <div class="section-inner">
       <h2 class="section-title reveal">Moments I Keep Coming Back To 📸</h2>
       <p class="section-sub reveal" data-delay="100">
-        <!-- EDIT: Replace with your gallery intro text -->
         Screenshots, memories, and everything that made me smile thinking of you.
       </p>
     </div>
     <!-- Full-bleed marquee strip — intentionally outside section-inner -->
     <div class="marquee-viewport">
       <div class="marquee-track" id="marquee-track">
-        <!-- EDIT: Replace each src with your photo -->
-        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 1" data-lightbox="https://picsum.photos/seed/p1/800/600">
-          <img src="https://picsum.photos/seed/p1/400/560" alt="Memory 1 — EDIT this alt text" />
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva at a night event" data-lightbox="assets/images/IMG_1245.jpg">
+          <img src="assets/images/IMG_1245.jpg" alt="Purva in a black dress with fairy lights" />
+          <p class="marquee-caption">Absolutely glowing ✨</p>
         </div>
-        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 2" data-lightbox="https://picsum.photos/seed/p2/800/600">
-          <img src="https://picsum.photos/seed/p2/400/480" alt="Memory 2 — EDIT this alt text" />
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva in traditional attire" data-lightbox="assets/images/IMG_1244.jpg">
+          <img src="assets/images/IMG_1244.jpg" alt="Purva in Navratri traditional look" />
+          <p class="marquee-caption">Queen of the vibe 👑</p>
         </div>
-        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 3" data-lightbox="https://picsum.photos/seed/p3/800/600">
-          <img src="https://picsum.photos/seed/p3/400/520" alt="Memory 3 — EDIT this alt text" />
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva in a black dress" data-lightbox="assets/images/IMG_1249.jpg">
+          <img src="assets/images/IMG_1249.jpg" alt="Purva smiling in a black dress" />
+          <p class="marquee-caption">That smile tho 😄</p>
         </div>
-        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 4" data-lightbox="https://picsum.photos/seed/p4/800/600">
-          <img src="https://picsum.photos/seed/p4/400/500" alt="Memory 4 — EDIT this alt text" />
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva in mint green kurta" data-lightbox="assets/images/IMG_1251.jpg">
+          <img src="assets/images/IMG_1251.jpg" alt="Purva in mint green kurta with mehndi" />
+          <p class="marquee-caption">Festive & fabulous 🌿</p>
         </div>
-        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 5" data-lightbox="https://picsum.photos/seed/p5/800/600">
-          <img src="https://picsum.photos/seed/p5/400/560" alt="Memory 5 — EDIT this alt text" />
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva as a child" data-lightbox="assets/images/f60f3e53-fa77-4936-8150-cb127e11e5cc.JPG">
+          <img src="assets/images/f60f3e53-fa77-4936-8150-cb127e11e5cc.JPG" alt="Purva as a little girl" />
+          <p class="marquee-caption">Little Purva was too cute 🥹</p>
         </div>
-        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 6" data-lightbox="https://picsum.photos/seed/p6/800/600">
-          <img src="https://picsum.photos/seed/p6/400/480" alt="Memory 6 — EDIT this alt text" />
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Baby Purva" data-lightbox="assets/images/771104c2-ed64-472a-a266-f8f3ec3989e1.JPG">
+          <img src="assets/images/771104c2-ed64-472a-a266-f8f3ec3989e1.JPG" alt="Baby Purva" />
+          <p class="marquee-caption">The origin story 📞👶</p>
+        </div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva in mint green dupatta" data-lightbox="assets/images/IMG_1253.PNG">
+          <img src="assets/images/IMG_1253.PNG" alt="Purva in mint green dupatta with mehndi" />
+          <p class="marquee-caption">Effortlessly stunning 🌿</p>
+        </div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Purva with friends at night" data-lightbox="assets/images/IMG_0311.jpg">
+          <img src="assets/images/IMG_0311.jpg" alt="Purva smiling with friends at a night event" />
+          <p class="marquee-caption">Good people, good nights 🌙</p>
         </div>
         <!-- JS clones the above 6 items to create a seamless infinite loop -->
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       VIDEO SECTION — Multi-video card grid
-       PERFORMANCE NOTE: Convert .MOV files to .mp4 before deploy.
-         Mac: open Terminal and run for each file —
-         ffmpeg -i input.MOV -vcodec h264 -acodec aac output.mp4
-         Or use HandBrake (free app) with the "Web Optimized" checkbox.
-       EDIT: Update each src, title, and description below.
-       The large screen recording file should NOT be included —
-       it is 27 MB and will cause lag. Use the 8 short clips only.
-       ═══════════════════════════════════════════════════════════ -->
+  <!-- VIDEO SECTION -->
   <section id="video" class="section section-alt">
     <div class="section-inner">
       <h2 class="section-title reveal">Little Moments 🎬</h2>
       <p class="section-sub reveal" data-delay="100">
-        <!-- EDIT: Replace with your own intro -->
         Things I saved. Things I kept coming back to.
       </p>
       <div class="video-grid">
 
-        <!-- ── Video Card 1 ── EDIT title, description, and src -->
         <div class="video-card reveal" data-delay="0">
           <div class="video-card-player">
             <video controls preload="none" aria-label="Video 1">
-              <source src="assets/video/clip-1.mp4" type="video/mp4" />
+              <source src="assets/video/E3759F14-34DF-43AD-9223-47427405C999.mp4" type="video/mp4" />
             </video>
           </div>
-          <!-- EDIT: Give this clip a personal title -->
-          <p class="video-card-title">This made me smile 😄</p>
+          <p class="video-card-title">The screen which started all of this 🖥️</p>
         </div>
 
-        <!-- ── Video Card 2 ── EDIT title, description, and src -->
         <div class="video-card reveal" data-delay="100">
           <div class="video-card-player">
             <video controls preload="none" aria-label="Video 2">
-              <source src="assets/video/clip-2.mp4" type="video/mp4" />
+              <source src="assets/video/ScreenRecording_04-26-2026 18-13-32_1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">The song says it all 🎵</p>
+        </div>
+
+        <div class="video-card reveal" data-delay="200">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 3">
+              <source src="assets/video/AA52C31D-44B1-4FB4-AD37-F361D473BDD1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">This made me smile 😄</p>
+        </div>
+
+        <div class="video-card reveal" data-delay="300">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 4">
+              <source src="assets/video/3918D571-C9CF-4E5B-941C-162BB6D01EEE.mp4" type="video/mp4" />
             </video>
           </div>
           <p class="video-card-title">That voice in my head 🎙️</p>
         </div>
 
-        <!-- ── Video Card 3 ── EDIT title, description, and src -->
-        <div class="video-card reveal" data-delay="200">
-          <div class="video-card-player">
-            <video controls preload="none" aria-label="Video 3">
-              <source src="assets/video/clip-3.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <p class="video-card-title">I laughed for 10 minutes 😂</p>
-        </div>
-
-        <!-- ── Video Card 4 ── EDIT title, description, and src -->
-        <div class="video-card reveal" data-delay="300">
-          <div class="video-card-player">
-            <video controls preload="none" aria-label="Video 4">
-              <source src="assets/video/clip-4.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <p class="video-card-title">Out of nowhere, this 💭</p>
-        </div>
-
-        <!-- ── Video Card 5 ── EDIT title, description, and src -->
         <div class="video-card reveal" data-delay="400">
           <div class="video-card-player">
             <video controls preload="none" aria-label="Video 5">
-              <source src="assets/video/clip-5.mp4" type="video/mp4" />
+              <source src="assets/video/53f35abe-4ecc-42c3-9939-dc689ccab9c5.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">I laughed for 10 minutes after this whole video 😂</p>
+        </div>
+
+        <div class="video-card reveal" data-delay="500">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 6">
+              <source src="assets/video/65DB8DB5-63EE-44A0-89DB-9D7955909C8B.mp4" type="video/mp4" />
             </video>
           </div>
           <p class="video-card-title">Saved this one twice 🔖</p>
         </div>
 
-        <!-- ── Video Card 6 ── EDIT title, description, and src -->
-        <div class="video-card reveal" data-delay="500">
-          <div class="video-card-player">
-            <video controls preload="none" aria-label="Video 6">
-              <source src="assets/video/clip-6.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <p class="video-card-title">This felt like us 🌙</p>
-        </div>
-
-        <!-- ── Video Card 7 ── EDIT title, description, and src -->
         <div class="video-card reveal" data-delay="600">
           <div class="video-card-player">
             <video controls preload="none" aria-label="Video 7">
-              <source src="assets/video/clip-7.mp4" type="video/mp4" />
+              <source src="assets/video/0768EC9D-AF7D-4AE4-8484-0173B583D948.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">Gyan le lo bhai thoda sa</p>
+        </div>
+
+        <div class="video-card reveal" data-delay="700">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 8">
+              <source src="assets/video/E6A1ECED-0A26-42AE-90CD-4DE2C01B907E.mp4" type="video/mp4" />
             </video>
           </div>
           <p class="video-card-title">Still think about this one ✨</p>
         </div>
 
-        <!-- ── Video Card 8 ── EDIT title, description, and src -->
-        <div class="video-card reveal" data-delay="700">
+        <div class="video-card reveal" data-delay="800">
           <div class="video-card-player">
-            <video controls preload="none" aria-label="Video 8">
-              <source src="assets/video/clip-8.mp4" type="video/mp4" />
+            <video controls preload="none" aria-label="Video 9">
+              <source src="assets/video/4C03B595-ED33-461A-83B2-0EDAB366E429.mp4" type="video/mp4" />
             </video>
           </div>
-          <p class="video-card-title">One more — couldn't leave it out 💖</p>
+          <p class="video-card-title">One more - couldn't leave it out 💖</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       MESSAGE CARD SECTION
-       EDIT: Replace the entire message below with your own words
-       The first sentence will have the typewriter effect applied.
-       ═══════════════════════════════════════════════════════════ -->
+  <!-- MESSAGE CARD -->
   <section id="message" class="section">
     <div class="section-inner">
-      <h2 class="section-title reveal">What I Really Want to Say 💌</h2>
+      <h2 class="section-title reveal">Okay, Real Talk 🎤</h2>
       <div class="message-card reveal" data-delay="150">
         <span class="quote-mark open">"</span>
-        <!-- EDIT: First sentence — typewriter effect plays on this line -->
-        <p class="message-typewriter" data-text="Purva, I don't think you realise how much our conversations have meant to me."></p>
-        <!-- EDIT: Rest of message -->
+        <p class="message-typewriter" data-text="Purva, you are genuinely one of the most fun people I have ever spoken to."></p>
         <p class="message-body">
-          Five months of talking every day — and somehow it still never feels like enough.
-          You make ordinary evenings feel like something worth remembering.
-          I don't know exactly what this is yet, but I know I'm glad it exists.
-          Happy Birthday — I hope today feels as good as you've made my days feel. 🎉
+          Five months of calls, random 2am conversations, and sending each other the most unhinged stuff and it somehow keeps getting better.
+          You're funny, loud in the best way, and honestly a chaos gremlin (I say this with full respect).
+          I'm really glad we ended up talking. You make ordinary days way more interesting.
+          Happy Birthday, you absolute legend - go enjoy your day to the fullest! 🎉🎊
         </p>
         <span class="quote-mark close">"</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       FOOTER
-       EDIT: Optionally change the name below
-       ═══════════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer id="footer">
     <p>Made with <span class="heart">❤️</span> just for you, <strong>Purva</strong></p>
-    <p class="footer-sub">Here's to many more calls, and maybe — someday soon — something more. 🌙</p>
+    <p class="footer-sub">Wishing you the most chaotic, fun-filled, cake-loaded birthday ever. You deserve it! 🎂🎊</p>
   </footer>
 
   <!-- Lightbox -->
@@ -229,11 +219,10 @@
   </div>
 
   <!-- Music Toggle (fixed bottom-right) -->
-  <!-- EDIT: Replace assets/music/background-music.mp3 with your audio file -->
   <audio id="bg-music" loop>
-    <source src="assets/music/background-music.mp3" type="audio/mpeg" />
+    <source src="assets/music/music.mp3" type="audio/mpeg" />
   </audio>
-  <button class="music-btn" id="music-btn" aria-label="Toggle background music">
+  <button class="music-btn playing" id="music-btn" aria-label="Toggle background music">
     <span class="music-icon">🎵</span>
     <span class="music-ring"></span>
   </button>

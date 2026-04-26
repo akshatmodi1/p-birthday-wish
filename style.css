@@ -16,6 +16,63 @@
   --font-body:   'Poppins', sans-serif;
 }
 
+/* ─── Splash Screen ─────────────────────────────────────────── */
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #FFE4EE, #FFF0F5, #FFE9F3);
+  background-size: 300% 300%;
+  animation: gradientDrift 8s ease infinite;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+#splash.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.splash-content { padding: 2rem; max-width: 480px; }
+.splash-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 1rem;
+}
+.splash-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.splash-name { color: var(--pink); font-style: italic; }
+.splash-sub {
+  color: var(--text-light);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.splash-btn {
+  display: inline-block;
+  padding: 0.9rem 2.4rem;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(135deg, var(--pink), #FF5C85);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--glow);
+  animation: btnPulse 2.5s ease-in-out infinite;
+  transition: transform var(--transition);
+}
+.splash-btn:hover { transform: scale(1.05); }
+
 /* ─── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -167,6 +224,7 @@ a { color: inherit; text-decoration: none; }
   transition: transform var(--transition);
 }
 .music-btn:hover { transform: scale(1.1); }
+.music-btn:not(.playing) { opacity: 0.6; }
 .music-ring {
   position: absolute;
   inset: -4px;
@@ -260,8 +318,30 @@ a { color: inherit; text-decoration: none; }
   opacity: 0;
   transition: opacity 0.35s ease;
   border-radius: 18px;
+  z-index: 1;
 }
 .marquee-item:hover::after { opacity: 1; }
+
+.marquee-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+.marquee-item:hover .marquee-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 @media (max-width: 600px) {
   .marquee-item { width: 200px; }
