@@ -18,13 +18,47 @@
 
   <!-- Splash Screen — click to enter (required for autoplay) -->
   <div id="splash" role="dialog" aria-modal="true" aria-label="Welcome screen">
+    <div class="splash-floaties" aria-hidden="true">
+      <span class="floatie">🎂</span>
+      <span class="floatie">🌸</span>
+      <span class="floatie">🧸</span>
+      <span class="floatie">🌟</span>
+      <span class="floatie">🐘</span>
+      <span class="floatie">💖</span>
+      <span class="floatie">🌈</span>
+      <span class="floatie">🎀</span>
+      <span class="floatie">🍰</span>
+      <span class="floatie">🌙</span>
+      <span class="floatie">🦋</span>
+      <span class="floatie">✨</span>
+      <span class="floatie">🌺</span>
+      <span class="floatie">🎊</span>
+      <span class="floatie">🐻</span>
+      <span class="floatie">💫</span>
+      <span class="floatie">🌷</span>
+      <span class="floatie">🎈</span>
+      <span class="floatie">🦄</span>
+      <span class="floatie">🍭</span>
+      <span class="floatie">🎁</span>
+      <span class="floatie">🌻</span>
+      <span class="floatie">🍓</span>
+      <span class="floatie">🎶</span>
+      <span class="floatie">🥳</span>
+      <span class="floatie">🌠</span>
+      <span class="floatie">🍬</span>
+      <span class="floatie">💝</span>
+      <span class="floatie">🌼</span>
+      <span class="floatie">🎠</span>
+    </div>
     <div class="splash-content">
-      <p class="splash-eyebrow">🎀 A little something for you</p>
-      <h2 class="splash-title">Happy Birthday,<br><span class="splash-name">Purva!</span></h2>
-      <p class="splash-sub">Tap to open your surprise 🎁</p>
-      <button class="splash-btn" id="splash-btn">Let's Go! 🎉</button>
+      <div class="splash-badge">🎀 A little something for you 🎀</div>
+      <h2 class="splash-title">Happy Birthday,<br><span class="splash-name">Purva!</span> 🎉</h2>
+      <p class="splash-sub">Your surprise is waiting inside ✨<br>Go ahead, open it! 👇</p>
+      <button class="splash-btn" id="splash-btn">Open Your Surprise 🎁</button>
     </div>
   </div>
+
+  <div id="main-content" style="display:none">
 
   <!-- Side Navigation Dots -->
   <nav class="side-nav" aria-label="Page sections">
@@ -226,6 +260,8 @@
     <span class="music-icon">🎵</span>
     <span class="music-ring"></span>
   </button>
+
+  </div><!-- end #main-content -->
 
   <script src="script.js"></script>
 </body>

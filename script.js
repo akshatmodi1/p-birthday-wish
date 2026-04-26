@@ -156,18 +156,29 @@ function initTypewriter() {
 
 // ─── Splash Screen + Autoplay ────────────────────────────────
 function initSplash() {
-  const splash = document.getElementById('splash');
-  const btn    = document.getElementById('splash-btn');
-  const audio  = document.getElementById('bg-music');
-  const musicBtn = document.getElementById('music-btn');
-  const icon   = musicBtn ? musicBtn.querySelector('.music-icon') : null;
+  const splash    = document.getElementById('splash');
+  const btn       = document.getElementById('splash-btn');
+  const audio     = document.getElementById('bg-music');
+  const musicBtn  = document.getElementById('music-btn');
+  const icon      = musicBtn ? musicBtn.querySelector('.music-icon') : null;
   if (!splash || !btn) return;
 
+  // lock scroll while splash is visible
+  document.body.classList.add('splash-open');
+
   btn.addEventListener('click', () => {
+    // reveal main content — images only start loading now
+    const main = document.getElementById('main-content');
+    if (main) main.style.display = '';
+
     splash.classList.add('hide');
-    setTimeout(() => { splash.style.display = 'none'; }, 650);
+    setTimeout(() => {
+      splash.style.display = 'none';
+      document.body.classList.remove('splash-open');
+    }, 700);
 
     if (audio) {
+      audio.volume = 0.1;
       audio.play().then(() => {
         if (musicBtn) musicBtn.classList.add('playing');
         if (icon) icon.textContent = '🎵';
