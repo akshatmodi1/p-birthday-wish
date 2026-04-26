@@ -39,6 +39,55 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════════════
+       PHOTO GALLERY
+       EDIT: Replace each img src with your actual photo paths
+       e.g. src="assets/images/photo-1.jpg"
+       EDIT: Replace each alt text with a meaningful description
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="gallery" class="section">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Our Beautiful Memories 📸</h2>
+      <p class="section-sub reveal" data-delay="100">
+        <!-- EDIT: Replace with your gallery intro text -->
+        A few snapshots of the moments that made us smile the most.
+      </p>
+      <div class="gallery-grid">
+        <!-- EDIT: Replace each src with your photo. Use picsum.photos for placeholders. -->
+        <div class="gallery-item reveal" data-delay="0"  data-lightbox="https://picsum.photos/seed/p1/800/600">
+          <img src="https://picsum.photos/seed/p1/400/300" alt="Memory 1 — EDIT this alt text" loading="lazy" />
+          <div class="gallery-overlay"><span>Memory 1</span></div>
+        </div>
+        <div class="gallery-item reveal" data-delay="100" data-lightbox="https://picsum.photos/seed/p2/800/600">
+          <img src="https://picsum.photos/seed/p2/400/500" alt="Memory 2 — EDIT this alt text" loading="lazy" />
+          <div class="gallery-overlay"><span>Memory 2</span></div>
+        </div>
+        <div class="gallery-item reveal" data-delay="200" data-lightbox="https://picsum.photos/seed/p3/800/600">
+          <img src="https://picsum.photos/seed/p3/400/350" alt="Memory 3 — EDIT this alt text" loading="lazy" />
+          <div class="gallery-overlay"><span>Memory 3</span></div>
+        </div>
+        <div class="gallery-item reveal" data-delay="300" data-lightbox="https://picsum.photos/seed/p4/800/600">
+          <img src="https://picsum.photos/seed/p4/400/450" alt="Memory 4 — EDIT this alt text" loading="lazy" />
+          <div class="gallery-overlay"><span>Memory 4</span></div>
+        </div>
+        <div class="gallery-item reveal" data-delay="400" data-lightbox="https://picsum.photos/seed/p5/800/600">
+          <img src="https://picsum.photos/seed/p5/400/300" alt="Memory 5 — EDIT this alt text" loading="lazy" />
+          <div class="gallery-overlay"><span>Memory 5</span></div>
+        </div>
+        <div class="gallery-item reveal" data-delay="500" data-lightbox="https://picsum.photos/seed/p6/800/600">
+          <img src="https://picsum.photos/seed/p6/400/500" alt="Memory 6 — EDIT this alt text" loading="lazy" />
+          <div class="gallery-overlay"><span>Memory 6</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <img id="lightbox-img" src="" alt="Full size photo" />
+  </div>
+
   <!-- Music Toggle (fixed bottom-right) -->
   <!-- EDIT: Replace assets/music/background-music.mp3 with your audio file -->
   <audio id="bg-music" loop>

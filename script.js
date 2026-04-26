@@ -81,6 +81,32 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+// ─── Lightbox ─────────────────────────────────────────────────
+function initLightbox() {
+  const box   = document.getElementById('lightbox');
+  const img   = document.getElementById('lightbox-img');
+  const close = document.getElementById('lightbox-close');
+  if (!box) return;
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      img.src = item.dataset.lightbox;
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    box.classList.remove('open');
+    document.body.style.overflow = '';
+    img.src = '';
+  }
+
+  close.addEventListener('click', closeLightbox);
+  box.addEventListener('click', e => { if (e.target === box) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+}
+
 // ─── Music Toggle ─────────────────────────────────────────────
 function initMusic() {
   const btn   = document.getElementById('music-btn');
@@ -107,4 +133,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavDots();
   initParticles();
   initMusic();
+  initLightbox();
 });
