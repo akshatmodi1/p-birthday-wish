@@ -82,6 +82,41 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════════════
+       VIDEO SECTION
+       EDIT option A: Replace the src below with your MP4 path
+         e.g. src="assets/video/birthday-video.mp4"
+       EDIT option B: Comment out the <video> block and uncomment
+         the <iframe> block below for a YouTube embed
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="video" class="section section-alt">
+    <div class="section-inner">
+      <h2 class="section-title reveal">A Little Something Special 🎬</h2>
+      <p class="section-sub reveal" data-delay="100">
+        <!-- EDIT: Replace with your video intro text -->
+        Press play — this one's made just for you.
+      </p>
+      <div class="video-wrap reveal" data-delay="200">
+        <!-- OPTION A: Local video file -->
+        <video controls poster="" width="100%">
+          <!-- EDIT: Replace src with your video file path -->
+          <source src="assets/video/birthday-video.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+
+        <!-- OPTION B: YouTube embed — uncomment and fill in your video ID
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Birthday video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        -->
+      </div>
+    </div>
+  </section>
+
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
     <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
