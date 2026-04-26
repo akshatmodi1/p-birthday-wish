@@ -116,51 +116,6 @@ function initLightbox() {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 }
 
-// ─── Surprise Animation ───────────────────────────────────────
-function initSurprise() {
-  const btn = document.getElementById('surprise-btn');
-  const msg = document.getElementById('surprise-msg');
-  if (!btn) return;
-
-  const messages = [
-    'The universe heard you! 🌟',
-    'Love sent! Purva felt it! 💕',
-    'Stars are dancing for you! ✨',
-    'The world just got a little brighter! 🌸',
-  ];
-
-  btn.addEventListener('click', () => {
-    // Confetti burst
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ['#FF85A1', '#FFB6C1', '#FFFFFF', '#FFD700', '#FF5C85'],
-    });
-
-    // Floating hearts
-    const symbols = ['💖', '✨', '🌸', '⭐', '💕', '🌟'];
-    const rect = btn.getBoundingClientRect();
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement('span');
-      heart.className = 'float-heart';
-      heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-      heart.style.left = (rect.left + Math.random() * rect.width) + 'px';
-      heart.style.top  = rect.top + 'px';
-      heart.style.animationDelay = (Math.random() * 0.4) + 's';
-      heart.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
-      document.body.appendChild(heart);
-      heart.addEventListener('animationend', () => heart.remove());
-    }
-
-    // Message
-    msg.textContent = messages[Math.floor(Math.random() * messages.length)];
-    msg.classList.remove('show');
-    void msg.offsetWidth; // force reflow to restart transition
-    msg.classList.add('show');
-  });
-}
-
 // ─── Typewriter Effect ────────────────────────────────────────
 function initTypewriter() {
   const el   = document.querySelector('.message-typewriter');
@@ -217,5 +172,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initMusic();
   initLightbox();
   initTypewriter();
-  initSurprise();
 });
