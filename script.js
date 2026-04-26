@@ -181,8 +181,8 @@ function initTypewriter() {
 function initMusic() {
   const btn   = document.getElementById('music-btn');
   const audio = document.getElementById('bg-music');
-  const icon  = btn.querySelector('.music-icon');
   if (!btn || !audio) return;
+  const icon  = btn.querySelector('.music-icon');
 
   btn.addEventListener('click', () => {
     if (audio.paused) {
