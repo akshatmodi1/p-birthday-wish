@@ -1,3 +1,51 @@
+// ─── Floating Particles ───────────────────────────────────────
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeParticle() {
+    return {
+      x: Math.random() * W,
+      y: H + Math.random() * 100,
+      r: Math.random() * 4 + 2,
+      speed: Math.random() * 0.6 + 0.3,
+      opacity: Math.random() * 0.5 + 0.2,
+      drift: (Math.random() - 0.5) * 0.4,
+    };
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: 28 }, makeParticle);
+    particles.forEach(p => { p.y = Math.random() * H; });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 133, 161, ${p.opacity})`;
+      ctx.fill();
+      p.y  -= p.speed;
+      p.x  += p.drift;
+      if (p.y + p.r < 0) Object.assign(p, makeParticle(), { y: H + 10 });
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
+}
+
 // ─── Side Nav Dots ────────────────────────────────────────────
 function initNavDots() {
   const dots = document.querySelectorAll('.nav-dot');
@@ -36,4 +84,5 @@ function initReveal() {
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initNavDots();
+  initParticles();
 });

@@ -65,3 +65,84 @@ a { color: inherit; text-decoration: none; }
   box-shadow: var(--glow);
 }
 @media (max-width: 600px) { .side-nav { right: 8px; } }
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFE4EE, #FFF0F5, #FFE9F3);
+  background-size: 300% 300%;
+  animation: gradientDrift 8s ease infinite;
+}
+@keyframes gradientDrift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#particles-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 700px;
+}
+.hero-eyebrow {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+}
+.hero-name {
+  color: var(--pink);
+  font-style: italic;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--text-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.btn:hover { transform: scale(1.05); }
+.btn-hero {
+  background: linear-gradient(135deg, var(--pink), #FF5C85);
+  color: var(--white);
+  box-shadow: var(--glow);
+  animation: btnPulse 2.5s ease-in-out infinite;
+}
+@keyframes btnPulse {
+  0%, 100% { box-shadow: var(--glow); }
+  50%       { box-shadow: var(--glow-strong); }
+}
