@@ -81,8 +81,30 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+// ─── Music Toggle ─────────────────────────────────────────────
+function initMusic() {
+  const btn   = document.getElementById('music-btn');
+  const audio = document.getElementById('bg-music');
+  const icon  = btn.querySelector('.music-icon');
+  if (!btn || !audio) return;
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().then(() => {
+        btn.classList.add('playing');
+        icon.textContent = '🔇';
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      btn.classList.remove('playing');
+      icon.textContent = '🎵';
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initNavDots();
   initParticles();
+  initMusic();
 });
