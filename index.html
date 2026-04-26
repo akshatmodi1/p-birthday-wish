@@ -41,44 +41,46 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       PHOTO GALLERY
+       PHOTO GALLERY — Infinite scrolling marquee
        EDIT: Replace each img src with your actual photo paths
-       e.g. src="assets/images/photo-1.jpg"
+         e.g. src="assets/images/photo-1.jpg"
        EDIT: Replace each alt text with a meaningful description
+       The strip duplicates itself for a seamless loop — edit
+       only the first set of 6 images (the second set is a clone
+       added automatically by JS for the seamless effect, but you
+       can also just duplicate your edits in both sets).
        ═══════════════════════════════════════════════════════════ -->
-  <section id="gallery" class="section">
+  <section id="gallery" class="section gallery-section">
     <div class="section-inner">
       <h2 class="section-title reveal">Moments I Keep Coming Back To 📸</h2>
       <p class="section-sub reveal" data-delay="100">
         <!-- EDIT: Replace with your gallery intro text -->
         Screenshots, memories, and everything that made me smile thinking of you.
       </p>
-      <div class="gallery-grid">
-        <!-- EDIT: Replace each src with your photo. Use picsum.photos for placeholders. -->
-        <div class="gallery-item reveal" tabindex="0" role="button" data-delay="0"  data-lightbox="https://picsum.photos/seed/p1/800/600">
-          <img src="https://picsum.photos/seed/p1/400/300" alt="Memory 1 — EDIT this alt text" loading="lazy" />
-          <div class="gallery-overlay"><span>Memory 1</span></div>
+    </div>
+    <!-- Full-bleed marquee strip — intentionally outside section-inner -->
+    <div class="marquee-viewport">
+      <div class="marquee-track" id="marquee-track">
+        <!-- EDIT: Replace each src with your photo -->
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 1" data-lightbox="https://picsum.photos/seed/p1/800/600">
+          <img src="https://picsum.photos/seed/p1/400/560" alt="Memory 1 — EDIT this alt text" />
         </div>
-        <div class="gallery-item reveal" tabindex="0" role="button" data-delay="100" data-lightbox="https://picsum.photos/seed/p2/800/600">
-          <img src="https://picsum.photos/seed/p2/400/500" alt="Memory 2 — EDIT this alt text" loading="lazy" />
-          <div class="gallery-overlay"><span>Memory 2</span></div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 2" data-lightbox="https://picsum.photos/seed/p2/800/600">
+          <img src="https://picsum.photos/seed/p2/400/480" alt="Memory 2 — EDIT this alt text" />
         </div>
-        <div class="gallery-item reveal" tabindex="0" role="button" data-delay="200" data-lightbox="https://picsum.photos/seed/p3/800/600">
-          <img src="https://picsum.photos/seed/p3/400/350" alt="Memory 3 — EDIT this alt text" loading="lazy" />
-          <div class="gallery-overlay"><span>Memory 3</span></div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 3" data-lightbox="https://picsum.photos/seed/p3/800/600">
+          <img src="https://picsum.photos/seed/p3/400/520" alt="Memory 3 — EDIT this alt text" />
         </div>
-        <div class="gallery-item reveal" tabindex="0" role="button" data-delay="300" data-lightbox="https://picsum.photos/seed/p4/800/600">
-          <img src="https://picsum.photos/seed/p4/400/450" alt="Memory 4 — EDIT this alt text" loading="lazy" />
-          <div class="gallery-overlay"><span>Memory 4</span></div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 4" data-lightbox="https://picsum.photos/seed/p4/800/600">
+          <img src="https://picsum.photos/seed/p4/400/500" alt="Memory 4 — EDIT this alt text" />
         </div>
-        <div class="gallery-item reveal" tabindex="0" role="button" data-delay="400" data-lightbox="https://picsum.photos/seed/p5/800/600">
-          <img src="https://picsum.photos/seed/p5/400/300" alt="Memory 5 — EDIT this alt text" loading="lazy" />
-          <div class="gallery-overlay"><span>Memory 5</span></div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 5" data-lightbox="https://picsum.photos/seed/p5/800/600">
+          <img src="https://picsum.photos/seed/p5/400/560" alt="Memory 5 — EDIT this alt text" />
         </div>
-        <div class="gallery-item reveal" tabindex="0" role="button" data-delay="500" data-lightbox="https://picsum.photos/seed/p6/800/600">
-          <img src="https://picsum.photos/seed/p6/400/500" alt="Memory 6 — EDIT this alt text" loading="lazy" />
-          <div class="gallery-overlay"><span>Memory 6</span></div>
+        <div class="marquee-item" tabindex="0" role="button" aria-label="Memory 6" data-lightbox="https://picsum.photos/seed/p6/800/600">
+          <img src="https://picsum.photos/seed/p6/400/480" alt="Memory 6 — EDIT this alt text" />
         </div>
+        <!-- JS clones the above 6 items to create a seamless infinite loop -->
       </div>
     </div>
   </section>

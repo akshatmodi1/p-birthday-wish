@@ -81,6 +81,19 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+// ─── Marquee — clone track for seamless infinite loop ─────────
+function initMarquee() {
+  const track = document.getElementById('marquee-track');
+  if (!track) return;
+  const items = Array.from(track.children);
+  items.forEach(item => {
+    const clone = item.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.removeAttribute('tabindex');
+    track.appendChild(clone);
+  });
+}
+
 // ─── Lightbox ─────────────────────────────────────────────────
 function initLightbox() {
   const box   = document.getElementById('lightbox');
@@ -89,19 +102,16 @@ function initLightbox() {
   if (!box) return;
   if (!close) return;
 
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
+  document.querySelectorAll('.marquee-item').forEach(item => {
+    const open = () => {
+      if (!item.dataset.lightbox) return;
       img.src = item.dataset.lightbox;
       box.classList.add('open');
       document.body.style.overflow = 'hidden';
-    });
+    };
+    item.addEventListener('click', open);
     item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        img.src = item.dataset.lightbox;
-        box.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
     });
   });
 
@@ -170,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavDots();
   initParticles();
   initMusic();
+  initMarquee();
   initLightbox();
   initTypewriter();
 });
