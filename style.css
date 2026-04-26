@@ -1,0 +1,39 @@
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --bg:          #FFF0F5;
+  --pink:        #FF85A1;
+  --pink-light:  #FFB6C1;
+  --pink-pale:   #FFE4EE;
+  --white:       #FFFFFF;
+  --text:        #5C3D4E;
+  --text-light:  #9B7389;
+  --glow:        0 0 30px rgba(255, 133, 161, 0.35);
+  --glow-strong: 0 0 50px rgba(255, 133, 161, 0.55);
+  --radius-card: 20px;
+  --radius-btn:  50px;
+  --transition:  0.3s ease;
+  --font-head:   'Playfair Display', serif;
+  --font-body:   'Poppins', sans-serif;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── Scroll-reveal base state (JS adds .revealed) ─────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.from-left  { transform: translateX(-40px); }
+.reveal.from-right { transform: translateX(40px); }
+.reveal.revealed   { opacity: 1; transform: translate(0); }
