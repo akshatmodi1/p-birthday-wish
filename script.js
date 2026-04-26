@@ -87,12 +87,21 @@ function initLightbox() {
   const img   = document.getElementById('lightbox-img');
   const close = document.getElementById('lightbox-close');
   if (!box) return;
+  if (!close) return;
 
   document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
       img.src = item.dataset.lightbox;
       box.classList.add('open');
       document.body.style.overflow = 'hidden';
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        img.src = item.dataset.lightbox;
+        box.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
     });
   });
 
@@ -154,13 +163,16 @@ function initSurprise() {
 
 // ─── Typewriter Effect ────────────────────────────────────────
 function initTypewriter() {
-  const el = document.querySelector('.message-typewriter');
-  if (!el) return;
+  const el   = document.querySelector('.message-typewriter');
+  const card = document.querySelector('.message-card');
+  if (!el || !card) return;
   const text = el.dataset.text || '';
   let i = 0;
+  let started = false;
 
   const obs = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
       obs.disconnect();
       function type() {
         if (i < text.length) {
@@ -172,9 +184,9 @@ function initTypewriter() {
       }
       type();
     }
-  }, { threshold: 0.5 });
+  }, { threshold: 0.3 });
 
-  obs.observe(el);
+  obs.observe(card);
 }
 
 // ─── Music Toggle ─────────────────────────────────────────────
