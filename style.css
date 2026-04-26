@@ -418,3 +418,46 @@ a { color: inherit; text-decoration: none; }
   .timeline-item.left  .timeline-dot,
   .timeline-item.right .timeline-dot { left: 9px; right: auto; top: 16px; }
 }
+
+/* ─── Surprise Section ──────────────────────────────────────── */
+.surprise-section {
+  background: linear-gradient(135deg, #FF85A1, #FF5C85, #FFB6C1);
+  background-size: 200% 200%;
+  animation: gradientDrift 6s ease infinite;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+.surprise-inner { position: relative; z-index: 1; }
+.btn-surprise {
+  background: var(--white);
+  color: var(--pink);
+  font-size: 1.1rem;
+  padding: 1rem 2.8rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.btn-surprise:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+
+.surprise-msg {
+  margin-top: 1.5rem;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-style: italic;
+  min-height: 1.5em;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.surprise-msg.show { opacity: 1; }
+
+/* Floating hearts spawned by JS */
+.float-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.4rem;
+  animation: floatUp 2.2s ease-out forwards;
+  z-index: 9999;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1);   opacity: 1; }
+  100% { transform: translateY(-70vh) scale(0.5); opacity: 0; }
+}
