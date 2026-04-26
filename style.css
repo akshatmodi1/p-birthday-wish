@@ -302,21 +302,47 @@ a { color: inherit; text-decoration: none; }
 /* ─── Section Alt Background ────────────────────────────────── */
 .section-alt { background: var(--white); }
 
-/* ─── Video ─────────────────────────────────────────────────── */
-.video-wrap {
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 24px;
+/* ─── Video Grid ─────────────────────────────────────────────── */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.video-card {
+  background: var(--white);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 12px 48px rgba(255, 133, 161, 0.25);
+  box-shadow: 0 6px 28px rgba(255, 133, 161, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
-.video-wrap video,
-.video-wrap iframe {
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
+}
+.video-card-player {
+  position: relative;
   width: 100%;
-  display: block;
-  aspect-ratio: 16 / 9;
-  border-radius: 24px;
+  aspect-ratio: 9 / 16;
+  background: #1a1a1a;
+  overflow: hidden;
 }
+.video-card-player video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-card-title {
+  padding: 0.9rem 1.1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; gap: 20px; } }
 
 /* ─── Message Card ──────────────────────────────────────────── */
 .message-card {

@@ -86,36 +86,105 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       VIDEO SECTION
-       EDIT option A: Replace the src below with your MP4 path
-         e.g. src="assets/video/birthday-video.mp4"
-       EDIT option B: Comment out the <video> block and uncomment
-         the <iframe> block below for a YouTube embed
+       VIDEO SECTION — Multi-video card grid
+       PERFORMANCE NOTE: Convert .MOV files to .mp4 before deploy.
+         Mac: open Terminal and run for each file —
+         ffmpeg -i input.MOV -vcodec h264 -acodec aac output.mp4
+         Or use HandBrake (free app) with the "Web Optimized" checkbox.
+       EDIT: Update each src, title, and description below.
+       The large screen recording file should NOT be included —
+       it is 27 MB and will cause lag. Use the 8 short clips only.
        ═══════════════════════════════════════════════════════════ -->
   <section id="video" class="section section-alt">
     <div class="section-inner">
-      <h2 class="section-title reveal">Something I Made For You 🎬</h2>
+      <h2 class="section-title reveal">Little Moments 🎬</h2>
       <p class="section-sub reveal" data-delay="100">
-        <!-- EDIT: Replace with your video intro text -->
-        Couldn't be there in person — so this is the next best thing.
+        <!-- EDIT: Replace with your own intro -->
+        Things I saved. Things I kept coming back to.
       </p>
-      <div class="video-wrap reveal" data-delay="200">
-        <!-- OPTION A: Local video file -->
-        <video controls aria-label="Birthday video for Purva" width="100%">
-          <!-- EDIT: Replace src with your video file path -->
-          <source src="assets/video/birthday-video.mp4" type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>
+      <div class="video-grid">
 
-        <!-- OPTION B: YouTube embed — uncomment and fill in your video ID
-        <iframe
-          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-          title="Birthday video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-        -->
+        <!-- ── Video Card 1 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="0">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 1">
+              <source src="assets/video/clip-1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <!-- EDIT: Give this clip a personal title -->
+          <p class="video-card-title">This made me smile 😄</p>
+        </div>
+
+        <!-- ── Video Card 2 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="100">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 2">
+              <source src="assets/video/clip-2.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">That voice in my head 🎙️</p>
+        </div>
+
+        <!-- ── Video Card 3 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="200">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 3">
+              <source src="assets/video/clip-3.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">I laughed for 10 minutes 😂</p>
+        </div>
+
+        <!-- ── Video Card 4 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="300">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 4">
+              <source src="assets/video/clip-4.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">Out of nowhere, this 💭</p>
+        </div>
+
+        <!-- ── Video Card 5 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="400">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 5">
+              <source src="assets/video/clip-5.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">Saved this one twice 🔖</p>
+        </div>
+
+        <!-- ── Video Card 6 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="500">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 6">
+              <source src="assets/video/clip-6.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">This felt like us 🌙</p>
+        </div>
+
+        <!-- ── Video Card 7 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="600">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 7">
+              <source src="assets/video/clip-7.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">Still think about this one ✨</p>
+        </div>
+
+        <!-- ── Video Card 8 ── EDIT title, description, and src -->
+        <div class="video-card reveal" data-delay="700">
+          <div class="video-card-player">
+            <video controls preload="none" aria-label="Video 8">
+              <source src="assets/video/clip-8.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="video-card-title">One more — couldn't leave it out 💖</p>
+        </div>
+
       </div>
     </div>
   </section>
