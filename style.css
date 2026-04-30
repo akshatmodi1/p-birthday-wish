@@ -530,6 +530,112 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; gap: 20px; } }
 
+/* ─── Hype Section ───────────────────────────────────────────── */
+.hype-section {
+  background: linear-gradient(160deg, #FFF0F5 0%, #FFF8FB 50%, #FFE4EE 100%);
+}
+
+.hype-label {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 0.7rem;
+}
+
+.hype-duo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hype-card {
+  flex: 1;
+  max-width: 280px;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 36px rgba(255, 133, 161, 0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.hype-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--glow-strong);
+}
+
+.hype-card-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+.hype-card-player video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hype-card-caption {
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.hype-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
+  align-self: center;
+  flex-shrink: 0;
+}
+.hype-divider-line {
+  display: block;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--pink-light), transparent);
+  border-radius: 2px;
+}
+.hype-divider-icon {
+  font-size: 1.6rem;
+  animation: hypeBounce 2s ease-in-out infinite;
+}
+@keyframes hypeBounce {
+  0%, 100% { transform: scale(1) rotate(-5deg); }
+  50%       { transform: scale(1.2) rotate(5deg); }
+}
+
+@media (max-width: 600px) {
+  .hype-duo {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .hype-card { max-width: 100%; width: 100%; }
+  .hype-divider {
+    flex-direction: row;
+    padding: 0;
+    gap: 12px;
+  }
+  .hype-divider-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--pink-light), transparent);
+  }
+}
+
 /* ─── Message Card ──────────────────────────────────────────── */
 .message-card {
   max-width: 780px;
@@ -598,6 +704,13 @@ footer strong { color: var(--pink); }
   font-size: 0.85rem;
   margin-top: 0.5rem;
   color: var(--pink-light);
+}
+.footer-credit {
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+  color: var(--text-light);
+  font-style: italic;
+  opacity: 0.75;
 }
 .heart {
   display: inline-block;
