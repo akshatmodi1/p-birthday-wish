@@ -171,6 +171,9 @@ function initSplash() {
     const main = document.getElementById('main-content');
     if (main) main.style.display = '';
 
+    // attach video audio sync now that all videos are in the DOM
+    setTimeout(() => { if (window._attachVideos) window._attachVideos(); }, 50);
+
     splash.classList.add('hide');
     setTimeout(() => {
       splash.style.display = 'none';
@@ -210,43 +213,47 @@ function initMusic() {
 
 // ─── Pause music while any video is playing ───────────────────
 function initVideoAudioSync() {
-  const audio  = document.getElementById('bg-music');
+  const audio    = document.getElementById('bg-music');
   const musicBtn = document.getElementById('music-btn');
-  const icon   = musicBtn ? musicBtn.querySelector('.music-icon') : null;
+  const icon     = musicBtn ? musicBtn.querySelector('.music-icon') : null;
   if (!audio) return;
 
-  let wasPlayingBeforeVideo = false;
+  const attached = new WeakSet();
 
-  document.querySelectorAll('.video-card-player video').forEach(video => {
+  function attachToVideo(video) {
+    if (attached.has(video)) return;
+    attached.add(video);
+
+    let wasMusicPlaying = false;
+
     video.addEventListener('play', () => {
       if (!audio.paused) {
-        wasPlayingBeforeVideo = true;
+        wasMusicPlaying = true;
         audio.pause();
         if (musicBtn) musicBtn.classList.remove('playing');
         if (icon) icon.textContent = '🔇';
       }
     });
 
-    video.addEventListener('pause', () => {
-      if (wasPlayingBeforeVideo) {
-        wasPlayingBeforeVideo = false;
+    const resume = () => {
+      if (wasMusicPlaying) {
+        wasMusicPlaying = false;
         audio.play().then(() => {
           if (musicBtn) musicBtn.classList.add('playing');
           if (icon) icon.textContent = '🎵';
         }).catch(() => {});
       }
-    });
+    };
 
-    video.addEventListener('ended', () => {
-      if (wasPlayingBeforeVideo) {
-        wasPlayingBeforeVideo = false;
-        audio.play().then(() => {
-          if (musicBtn) musicBtn.classList.add('playing');
-          if (icon) icon.textContent = '🎵';
-        }).catch(() => {});
-      }
-    });
-  });
+    video.addEventListener('pause', resume);
+    video.addEventListener('ended', resume);
+  }
+
+  window._attachVideos = function() {
+    document.querySelectorAll('video').forEach(attachToVideo);
+  };
+
+  window._attachVideos();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
